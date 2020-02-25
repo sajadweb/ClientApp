@@ -1,11 +1,10 @@
 import React from 'react';
-import { Button, DatePicker } from 'antd';
+import { Select } from './components';
 
 function App() {
   return (
     <div>
-         <Button type="primary">PRESS ME</Button>
-         <DatePicker />
+         <Select />
     </div>
   );
 }
