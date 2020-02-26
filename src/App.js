@@ -4,6 +4,7 @@ import { Select } from './components';
 function App() {
   return (
     <div>
+         <Select trigger={"click"}/>
          <Select />
     </div>
   );

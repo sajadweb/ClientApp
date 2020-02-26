@@ -1,5 +1,5 @@
 import React , {useState} from 'react';
-import { Menu, Dropdown,  Input } from 'antd';
+import { Menu, Dropdown,  Input ,Card} from 'antd';
 import { Scrollbars } from 'react-custom-scrollbars';
 import "./select.style.css"
 const list = [
@@ -17,7 +17,7 @@ const list = [
   { 'id': 12, title: 'Davoud' },
 ];
 
-function Select() {
+function Select({trigger="hover"}) {
   const scrollbars = React.useRef();
   const [selected, setSelected] = useState("");
   const menu = (
@@ -31,6 +31,7 @@ function Select() {
       autoHeightMax={200}
       thumbMinSize={30}
       universal={true}
+
       style={{height: 300}}  ref={scrollbars}>
 
     <Menu onClick={(e) => setSelected(list.find((i)=> i.id == e.key  ))} mode="vertical">
@@ -44,12 +45,14 @@ function Select() {
   );
 
   return <div>
-    {JSON.stringify(selected)}
-<br />
-    <Dropdown overlay={menu} placement="bottomCenter">
-      <Input value={selected ?selected.title:''} onChange={(e)=>console.log(e.target.value)} style={{ width: 200 }}   placeholder="Basic usage"/>
 
-    </Dropdown>
+    <Card>
+      {trigger}:
+      <Dropdown trigger={trigger} overlay={menu} placement="bottomCenter">
+        <Input value={selected ?selected.title:''} onChange={(e)=>console.log(e.target.value)} style={{ width: 200 }}   placeholder="Basic usage"/>
+
+      </Dropdown>
+    </Card>
   </div>;
 }
 
